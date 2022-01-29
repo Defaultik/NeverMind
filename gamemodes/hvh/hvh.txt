@@ -1,0 +1,10 @@
+"hvh"
+{
+	"base"		"base"
+	"title"		"hvh"
+	"version"	"2.0"
+	"category"	"pvp"
+	"menusystem"	"1"
+
+	"author_name"   "Default"
+}
