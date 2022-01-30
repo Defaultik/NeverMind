@@ -26,7 +26,7 @@ function PLAYER:enableAFK()
 			nextOccurance = CurTime() + delay
 		else
 			timer.Simple(0.1, function()
-				self:ChatPrint(color.orange, "["..config.ProjectName.."]: ", color.white, "Please don't spam this function
+				self:ChatPrint(color.orange, "["..config.ProjectName.."]: ", color.white, "Please don't spam this function")
 			end)
 		end
 	end
