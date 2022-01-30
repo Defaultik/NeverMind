@@ -61,3 +61,7 @@ if (SERVER) then
 		net.Send(self)
 	end
 end
+
+function PLAYER:IsBanned()
+	return ULib.bans[self:SteamID()]
+end

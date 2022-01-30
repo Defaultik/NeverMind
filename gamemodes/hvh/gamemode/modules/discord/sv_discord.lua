@@ -13,16 +13,18 @@ function discordPost(ply, message)
 	})
 end
 
-hook.Add("PlayerConnect", "PlayerConnect", function(ply)
+hook.Add("PlayerInitialSpawn", "PlayerConnect", function(ply)
 	if (ply:IsAdmin()) then
 		serverAdmins = (serverAdmins or 0) + 1
 
-		discordPost(ply, "Connected to the server (ADMIN)")
+		discordPost(ply, "Connected to the server ("..serverAdmins.." admins online)")
 	end
 end)
 
 hook.Add("PlayerDisconnected", "PlayerDisconnect", function(ply)
-	if ply:IsAdmin() then
+	if (ply:IsAdmin()) then
 		serverAdmins = serverAdmins - 1
+
+		discordPost(ply, "Disconnected from the server ("..serverAdmins.." admins online)")
 	end
 end)

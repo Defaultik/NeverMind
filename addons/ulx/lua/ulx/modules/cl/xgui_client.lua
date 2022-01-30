@@ -132,36 +132,24 @@ function xgui.init( ply )
 
 	--Load modules
 	local sm = xgui.settings.showLoadMsgs
-	if sm then
-		Msg( "\n///////////////////////////////////////\n" )
-		Msg( "//  ULX GUI -- Made by Stickly Man!  //\n" )
-		Msg( "///////////////////////////////////////\n" )
-		Msg( "// Loading GUI Modules...            //\n" )
-	end
 	for _, file in ipairs( file.Find( "ulx/xgui/*.lua", "LUA" ) ) do
 		include( "ulx/xgui/" .. file )
-		if sm then Msg( "//   " .. file .. string.rep( " ", 32 - file:len() ) .. "//\n" ) end
 	end
-	if sm then Msg( "// Loading Setting Modules...        //\n" ) end
+
 	for _, file in ipairs( file.Find( "ulx/xgui/settings/*.lua", "LUA" ) ) do
 		include( "ulx/xgui/settings/" .. file )
-		if sm then Msg( "//   " .. file .. string.rep( " ", 32 - file:len() ) .. "//\n" ) end
 	end
-	if sm then Msg( "// Loading Gamemode Module(s)...     //\n" ) end
+
 	if ULib.isSandbox() and GAMEMODE.FolderName ~= "sandbox" then -- If the gamemode sandbox-derived (but not sandbox, that will get added later), then add the sandbox Module
 		include( "ulx/xgui/gamemodes/sandbox.lua" )
-		if sm then Msg( "//   sandbox.lua                     //\n" ) end
 	end
+
 	for _, file in ipairs( file.Find( "ulx/xgui/gamemodes/*.lua", "LUA" ) ) do
 		if string.lower( file ) == string.lower( GAMEMODE.FolderName .. ".lua" ) then
 			include( "ulx/xgui/gamemodes/" .. file )
-			if sm then Msg( "//   " .. file .. string.rep( " ", 32 - file:len() ) .. "//\n" ) end
 			break
 		end
-		if sm then Msg( "//   No module found!                //\n" ) end
 	end
-	if sm then Msg( "// Modules Loaded!                   //\n" ) end
-	if sm then Msg( "///////////////////////////////////////\n\n" ) end
 
 	--Find any existing modules that aren't listed in the requested order.
 	local function checkModulesOrder( moduleTable, sortTable )
